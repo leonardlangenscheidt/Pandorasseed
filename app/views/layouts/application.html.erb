@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pseed</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= link_to 'Home', root_path %> |
+
+<% if signed_in? %>
+	<%= link_to 'Profile', profile_path %> | <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+<% else %>
+	<%= link_to "Sign In", new_user_session_path %> | <%= link_to "Sign Up", new_user_registration_path %>
+<%end%>
+<br>
+<% if notice %>
+	<p class="alert alert-failure" id="notice"><%= notice %></p>
+<%end%>
+<br>
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+profile
+
+<p><%= @user.email %></p>
+<ul>
+	<% @user.orders.each do |order| %>
+		<li><%=order.seed.id%></li>
+	<%end%>
+</ul>
