@@ -1,8 +1,12 @@
-profile
+<h1>Past Orders <small>for <%= @user.email %></h1>
 
-<p><%= @user.email %></p>
-<ul>
-	<% @user.orders.each do |order| %>
-		<li><%=order.seed.id%></li>
-	<%end%>
-</ul>
+<table>
+	<tbody>
+		<% @user.orders.each do |order| %>
+			<tr>
+				<td><%= order.created_at.strftime "%d.%m.%Y" %></td>
+				<td><%=order.seed.care%><td>
+			</tr>
+		<%end%>
+	</tbody>
+</table>

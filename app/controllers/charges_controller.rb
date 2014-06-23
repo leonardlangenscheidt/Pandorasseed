@@ -16,12 +16,14 @@ class ChargesController < ApplicationController
 	  	)
 
 	  	@seeds = []
-	  	@as = Seed.all
-	  	@as.each do |seed|
+
+	  	@allseeds = Seed.all
+	  	@allseeds.each do |seed|
 	  		@seeds.push(seed.id)
 	  	end
-	  	@us = current_user.orders
-	  	@us.each do |order|
+
+	  	@userorders = current_user.orders
+	  	@userorders.each do |order|
 	  		@seeds.delete(order.seed_id)
 	  	end
 
