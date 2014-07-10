@@ -16,10 +16,26 @@ td {
 	height: 50px;
 }
 
+.row {
+	div {
+		background: rgba(255, 255, 255, 0.3);
+		border-radius:5px;
+	}
+	* {
+		color:black;
+	}
+}
+
 * {
 	color: darkgreen;
 }
 
 h1 {
 	text-align: center;
+}
+
+body {
+	background: url("http://33.media.tumblr.com/e86e2ebe8842b35c2c90db2b425b8276/tumblr_mr80knfGwL1st5lhmo1_1280.jpg");
+	background-size: cover;
+      	background-position: center;
 }
