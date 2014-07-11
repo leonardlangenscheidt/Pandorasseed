@@ -1,41 +1,33 @@
-<div class="container">
-	<div class="row">
-		<div class="span12">
-			<h1>
-				Welcome to Seeds of Pandora!<br>
 
-			</h1>
-		</div>
-	</div>
-	<div class="row" style="padding:50px 0;">
-		<div class="span7 imagespan">
-			<h1><small>
-				Experience the miracle of nature<br>
-				Grow seeds without knowing what they'll become
-			</small></h1>
+<div class="row" style="padding-bottom:20px;">
+	<div class="span8">
+		<p>
+			Experience the miracle of nature<br>
+			Grow seeds without knowing what they'll become
+		</p>
 
-		</div>
-		<div class="span5">
-			<% if signed_in? %>
-				<h1><small>
-					Click here to<br>
-					<%= link_to 'Buy Seeds', buy_path, class: "btn btn-primary" %>
-				</small></h1>
-			<% else %>
-				<h1><small>
-					Click here to<br>
-					<%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
-				</small></h1>
-			<% end %>
-		</div>
 	</div>
-	<div class="row">
-		<div class="span12">
-			<%= image_tag 'closed-nos.png', class: 'steps steps-img' %>
-			<%= image_tag 'arrow1.png', class: 'steps steps-arw' %>
-			<%= image_tag 'open-nos.png', class: 'steps steps-img' %>
-			<%= image_tag 'arrow2.png', class: 'steps steps-arw' %>
-			<%= image_tag 'questionmark.jpg', class: 'steps steps-img' %>
-		</div>
+	<div class="span4">
+		<% if signed_in? %>
+			<p>
+				Click here to<br>
+				<%= link_to 'Buy Seeds', buy_path, class: "btn btn-primary" %>
+			</p>
+		<% else %>
+			<p>
+				Click here to<br>
+				<%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success" %>
+			</p>
+		<% end %>
 	</div>
 </div>
+<div class="row">
+	<div class="span12">
+		<%= image_tag 'closed-nos.png', class: 'steps steps-img' %>
+		<%= image_tag 'arrow1.png', class: 'steps steps-arw' %>
+		<%= image_tag 'open-nos.png', class: 'steps steps-img' %>
+		<%= image_tag 'arrow2.png', class: 'steps steps-arw' %>
+		<%= image_tag 'questionmark.jpg', class: 'steps steps-img' %>
+	</div>
+</div>
+

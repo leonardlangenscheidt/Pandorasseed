@@ -16,26 +16,43 @@ td {
 	height: 50px;
 }
 
-.row {
-	div {
-		background: rgba(255, 255, 255, 0.3);
+
+.row>div {
+		background: rgba(255, 255, 255, 0.7);
 		border-radius:5px;
-	}
-	* {
-		color:black;
-	}
+		p, h1 {
+			padding: 10px;
+		}
 }
 
-* {
-	color: darkgreen;
+.regdiv {
+	padding: 10px;
+	width:50%;
+	margin:auto;
+}
+
+.navbar, .navbar-fixed-top, .navbar-inner {
+	background: rgba(200, 200, 200, 0.2);
 }
 
 h1 {
 	text-align: center;
+	font-family: 'Raleway', sans-serif;
+	font-weight: extra-light;
 }
 
-body {
-	background: url("http://33.media.tumblr.com/e86e2ebe8842b35c2c90db2b425b8276/tumblr_mr80knfGwL1st5lhmo1_1280.jpg");
-	background-size: cover;
-      	background-position: center;
+p {
+	font-size: 25px;
+	line-height: 50px;
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
 }
+
+.bkg {
+	background: url("http://s11.postimg.org/h8awrbscz/seeds.jpg");
+      	background-repeat: no-repeat;
+      	background-position: center;
+      	height: 500px;
+      	margin-top:150px;
+}
+
