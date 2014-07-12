@@ -29,15 +29,16 @@ class ChargesController < ApplicationController
 
 
 		if @seeds.length>0
-	  		current_user.orders.create(
+	  		@order = Order.create(
 	  			:user_id => current_user.id,
 	  			:seed_id => @seeds[rand(@seeds.length)])
 	  	else
-	  		current_user.orders.create(
+	  		@order = Orders.create(
 	  			:user_id => current_user.id,
 	  			:seed_id => rand(@as.count))
   		end
 
+  		UserMailer.purchase_email(@order).deliver
 
 	  	redirect_to '/success'
 
