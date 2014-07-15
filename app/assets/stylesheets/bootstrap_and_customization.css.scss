@@ -1,4 +1,9 @@
 @import 'bootstrap';
+$green: #5ebb5e;
+
+a {
+	color: $green;
+}
 
 td {
 	padding:5px;
@@ -22,14 +27,18 @@ td {
 	height: 50px;
 }
 
-
-.row>div {
+/*BOXES*/
+.row {
+	margin-bottom:20px;
+	div {
 		background: rgba(255, 255, 255, 0.8);
 		border-radius:5px;
-		p, h1 {
+		p {
 			padding: 10px;
 		}
+	}
 }
+
 
 .regdiv {
 	padding: 10px;
@@ -54,7 +63,7 @@ p {
 	font-family: 'Raleway', sans-serif;
 }
 
-.bkg {
+#bkg {
 	background: url("http://s11.postimg.org/h8awrbscz/seeds.jpg");
       	background-repeat: no-repeat;
       	background-position: center;

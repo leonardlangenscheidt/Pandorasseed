@@ -9,6 +9,9 @@ class PagesController < ApplicationController
 	def success
 	end
 
+	def howto
+	end
+
 	def profile
 		if signed_in?
 			@user = current_user

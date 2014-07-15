@@ -14,10 +14,11 @@
 				<ul class="nav">
 					<li><%= link_to 'Home', root_path %></li>
 					<li><%= link_to 'Buy Seeds', buy_path %></li>
+					<li><%= link_to 'How To', howto_path %></li>
 				</ul>
 				<ul class="nav pull-right">
 					<% if signed_in? %>
-						<li><%= link_to 'Past Orders', profile_path %></li>
+						<li><%= link_to 'My Seeds', profile_path %></li>
 						<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
 					<% else %>
 						<li><%= link_to "Sign In", new_user_session_path %></li>

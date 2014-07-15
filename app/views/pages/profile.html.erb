@@ -1,12 +1,16 @@
-<h1>Past Orders <small>for <%= @user.email %></h1>
-
-<table>
-	<tbody>
-		<% @user.orders.each do |order| %>
-			<tr>
-				<td><%= order.created_at.strftime "%d.%m.%Y" %></td>
-				<td><%=order.seed.care%><td>
-			</tr>
-		<%end%>
-	</tbody>
-</table>
+<div class="row">
+	<div class="span12">
+		<h1>Past Orders <small>for <%= @user.email %></small></h1>
+	</div>
+</div>
+<div class="row">
+	<% @user.orders.each do |order| %>
+		<div class="span4">
+			<p>
+				Date: <%= order.created_at.strftime "%B %e" %><br>
+				Status: shippedornot<br>
+				<a>Resend care instructions</a>
+			</p>
+		</div>
+	<%end%>
+</div>

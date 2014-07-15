@@ -1,5 +1,5 @@
 
-<div class="row" style="padding-bottom:20px;">
+<div class="row">
 	<div class="span8">
 		<p>
 			Experience the miracle of nature<br>
@@ -11,7 +11,7 @@
 		<% if signed_in? %>
 			<p>
 				Click here to<br>
-				<%= link_to 'Buy Seeds', buy_path, class: "btn btn-primary" %>
+				<%= link_to 'Buy Seeds', buy_path, class: "btn btn-success" %>
 			</p>
 		<% else %>
 			<p>
@@ -22,14 +22,11 @@
 	</div>
 </div>
 <div class="row">
-	<div class="span12">
-		<div style="text-align:center;">
-			<%= image_tag 'closed-nos.png', class: 'steps step1' %>
-			<%= image_tag 'arrow1.png', class: 'steps steps-arw' %>
-			<%= image_tag 'supplies.png', class: 'steps step2' %>
-			<%= image_tag 'arrow2.png', class: 'steps steps-arw' %>
-			<%= image_tag 'questionpot.png', class: 'steps step3' %>
-		</div>
+	<div class="span4" style="height:151px; padding-top:20px;">
+		<p>Learn how it works <%= link_to "here", howto_path %>!</p>
+	</div>
+	<div class="span8" style="text-align:center;">
+		<%= image_tag 'seedgrowth.png' %>
 	</div>
 </div>
 
