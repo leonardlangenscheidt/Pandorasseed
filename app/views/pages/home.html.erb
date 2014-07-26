@@ -7,7 +7,7 @@
 		</p>
 
 	</div>
-	<div class="span4">
+	<div class="span4" style='display:none'>
 		<% if signed_in? %>
 			<p>
 				Click here to<br>
@@ -19,6 +19,12 @@
 				<%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success" %>
 			</p>
 		<% end %>
+	</div>
+	<div class="span4">
+		<p>
+			Click here to<br>
+			<%= link_to "Pre-order", "mailto:seedsofpandora@gmail.com", class: "btn btn-success" %>
+		</p>
 	</div>
 </div>
 <div class="row">

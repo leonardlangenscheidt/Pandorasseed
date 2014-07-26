@@ -1,16 +1,44 @@
 <div class="row">
 	<div class="span12">
-		<p>this is the page where you buy seeds
+		<%if notice%><p class="notice"><%= notice %></p><%end%>
+		<%if alert%><p class="alert"><%= alert %></p><%end%>
+
+		<p>
 
 		<% if signed_in? %>
+			<%= form_tag("/confirm", method: "get") do %>
+				<table>
+					<tr>
+						<td><%= label_tag(:n, "Name:") %></td>
+						<td><%= text_field_tag(:n) %></td>
+					</tr><tr>
+						<td><%= label_tag(:s1, "Street Address:") %></td>
+						<td><%= text_field_tag(:s1) %></td>
+					</tr><tr>
+						<td><%= label_tag(:s2, "Line 2:") %></td>
+						<td><%= text_field_tag(:s2) %></td>
+					</tr><tr>
+						<td><%= label_tag(:c, "City:") %></td>
+						<td><%= text_field_tag(:c) %></td>
+					</tr><tr>
+						<td><%= label_tag(:s, "State:") %></td>
+						<td><%= text_field_tag(:s) %></td>
+					</tr><tr>
+						<td><%= label_tag(:z, "ZIP Code:") %></td>
+						<td><%= text_field_tag(:z) %></td>
+					</tr><tr>
+						<td><%= radio_button_tag(:p, false) %>
+						<%= label_tag(:p, "Regular") %></td>
+						<td><%= radio_button_tag(:p, true) %>
+						<%= label_tag(:p, "I want premium!") %></td>
+					</tr><tr>
+						<td></td><td><%= submit_tag "Continue", :class => "btn btn-success", :style =>"margin-left: 65px" %></td>
+					</tr>
 
-			<%= form_tag charges_path do%>
-			  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-			          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-			          data-description="Pandora's Seed"
-			          data-amount="1000"
-			          data-email=<%=current_user.email%>></script>
+				</table>
+
 			<% end %>
+
 
 		<% else %>
 
@@ -18,5 +46,6 @@
 
 		<% end %>
 		</p>
+
 	</div>
 </div>

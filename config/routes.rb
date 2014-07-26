@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
+
   get '/buy' => 'pages#buy'
+  get '/confirm' => 'pages#confirm'
   get '/success' => 'pages#success'
   get '/profile' => 'pages#profile'
   get '/howto' => 'pages#howto'
