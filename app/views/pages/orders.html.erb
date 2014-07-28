@@ -1,0 +1,43 @@
+<div class='row'>
+	<div class='span12'>
+		<h1>Orders</h1>
+		<h2>Outstanding</h2>
+		<table class="table">
+			<thead>
+					<tr>
+						<th>Order ID</th>
+						<th>Email Address</th>
+						<th>Address</th>
+						<th>Premium</th>
+						<th>Gift</th>
+						<th>Shipped</th>
+					</tr>
+			</thead>
+			<tbody>
+				<% @orders.each do |order| %>
+				<% if order.shipped == false %>
+					<tr>
+						<td><%=order.id%></td>
+						<td><%= link_to order.user.email, "mailto:#{order.user.email}"%></td>
+						<td>
+							<%=order.name%><br>
+							<%=order.street1%><br>
+							<%=order.street2%><br>
+							<%=order.zip%> <%=order.city%>, <%=order.state%>
+						</td>
+						<td>
+							<% if order.premium == true %>YES
+							<% else%>NO<%end%>
+						</td>
+						<td>
+							<% if order.gift == true %>YES
+							<% else%>NO<%end%>
+						</td>
+						<td><%= link_to "Shipped it!", '#' %></td>
+					</tr>
+				<% end %>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

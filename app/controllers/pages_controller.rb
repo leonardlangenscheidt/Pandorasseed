@@ -4,31 +4,40 @@ class PagesController < ApplicationController
 	end
 
 	def buy
-		@name = params[:n]
-		@street = params[:s1]
-		@street2 = params[:s2]
-		@city = params[:c]
-		@zip = params[:z]
-		@state = params[:s]
-		@premium = params[:p]
+		@gift = params[:gift]
+		@premium = params[:premium]
+	end
+
+	def address
+		@name = params[:name]
+		@street1 = params[:street1]
+		@street2 = params[:street2]
+		@city = params[:city]
+		@zip = params[:zip]
+		@state = params[:state]
+		@message = params[:message]
+		@gift = params[:gift]
+		@premium = params[:premium]
 	end
 
 	def confirm
-		@name = params[:n]
-		@street = params[:s1]
-		@street2 = params[:s2]
-		@city = params[:c]
-		@zip = params[:z]
-		@state = params[:s]
-		if params[:p] = 'true'
-			@premium = true
-		else
-			@premium = false
+		@name = params[:name]
+		@street1 = params[:street1]
+		@street2 = params[:street2]
+		@city = params[:city]
+		@zip = params[:zip]
+		@state = params[:state]
+		@message = params[:message]
+		@gift = params[:gift]
+		@premium = params[:premium]
+		if @name==nil||@street1.length==0 ||@city==nil ||@zip.length<5 ||@state==nil
+			flash[:notice]='Please complete all fields correctly'
+			redirect_to address_path(:name=>@name, :street1=>@street1, :street2=>@street2, :city=>@city, :zip=>@zip, :state=>@state, :premium => @premium, :gift => @gift, :message => @message)
 		end
-		if @name==nil||@street==nil ||@city==nil ||@zip.length<5 ||@state==nil
-			flash[:notice]='Please complete all fields'
-			redirect_to buy_path(:n=>@name, :s1=>@street, :s2=>@street2, :c=>@city, :z=>@zip, :s=>@state)
-		end
+	end
+
+	def orders
+		@orders = Order.all
 	end
 
 	def success

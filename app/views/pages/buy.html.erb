@@ -6,35 +6,42 @@
 		<p>
 
 		<% if signed_in? %>
-			<%= form_tag("/confirm", method: "get") do %>
+			<%= form_tag("/address", method: "get") do %>
 				<table>
 					<tr>
-						<td><%= label_tag(:n, "Name:") %></td>
-						<td><%= text_field_tag(:n) %></td>
-					</tr><tr>
-						<td><%= label_tag(:s1, "Street Address:") %></td>
-						<td><%= text_field_tag(:s1) %></td>
-					</tr><tr>
-						<td><%= label_tag(:s2, "Line 2:") %></td>
-						<td><%= text_field_tag(:s2) %></td>
-					</tr><tr>
-						<td><%= label_tag(:c, "City:") %></td>
-						<td><%= text_field_tag(:c) %></td>
-					</tr><tr>
-						<td><%= label_tag(:s, "State:") %></td>
-						<td><%= text_field_tag(:s) %></td>
-					</tr><tr>
-						<td><%= label_tag(:z, "ZIP Code:") %></td>
-						<td><%= text_field_tag(:z) %></td>
-					</tr><tr>
-						<td><%= radio_button_tag(:p, false) %>
-						<%= label_tag(:p, "Regular") %></td>
-						<td><%= radio_button_tag(:p, true) %>
-						<%= label_tag(:p, "I want premium!") %></td>
-					</tr><tr>
+						<% unless @premium == 'false' %>
+							<td><label>
+								<%= radio_button_tag(:premium, false) %>Regular
+							</label></td>
+							<td><label><%= radio_button_tag(:premium, true, checked = true) %>Premium
+							</label></td>
+						<% else %>
+							<td><label><%= radio_button_tag(:premium, false, checked = true) %>Regular
+							</label></td>
+							<td><label><%= radio_button_tag(:premium, true) %>Premium
+							</label></td>
+						<% end %>
+					</tr>
+					<tr>
+						<% unless @gift == 'false' %>
+							<td><label>
+								<%= radio_button_tag(:gift, false) %>For myself
+							</label></td>
+							<td><label>
+								<%= radio_button_tag(:gift, true, checked = true) %>This is a gift
+							</label></td>
+						<% else %>
+							<td><label>
+								<%= radio_button_tag(:gift, false, checked = true) %>For myself
+							</label></td>
+							<td><label>
+								<%= radio_button_tag(:gift, true) %>This is a gift
+							</label></td>
+						<% end %>
+					</tr>
+					<tr>
 						<td></td><td><%= submit_tag "Continue", :class => "btn btn-success", :style =>"margin-left: 65px" %></td>
 					</tr>
-
 				</table>
 
 			<% end %>

@@ -1,7 +1,11 @@
 class ChargesController < ApplicationController
 	def create
 	  	# Amount in cents
-	  	@amount = 1800
+	  	if @premium == 'true'
+	  		@amount = 2500
+	  	else
+	  		@amount = 1000
+	  	end
 
 	  	customer = Stripe::Customer.create(
 			:email => current_user.email,
@@ -15,6 +19,7 @@ class ChargesController < ApplicationController
 			:currency    => 'usd'
 	  	)
 
+	  	#creating a list of possible seeds
 	  	@seeds = []
 
 	  	@allseeds = Seed.all
@@ -31,11 +36,43 @@ class ChargesController < ApplicationController
 		if @seeds.length>0
 	  		@order = Order.create(
 	  			:user_id => current_user.id,
-	  			:seed_id => @seeds[rand(@seeds.length)])
+	  			:seed_id => @seeds[rand(@seeds.length)],
+	  			:gift => false,
+	  			:shipped => false,
+	  			:premium => false,
+	  			:message => params[:message],
+	  			:name => params[:name],
+	  			:street1 => params[:street1],
+	  			:street2 => params[:street2],
+	  			:city => params[:city],
+	  			:state => params[:state],
+	  			:zip => params[:zip].to_i
+	  			)
 	  	else
 	  		@order = Orders.create(
 	  			:user_id => current_user.id,
-	  			:seed_id => rand(@as.count))
+	  			:seed_id => rand(@as.count),
+	  			:gift => false,
+	  			:shipped => false,
+	  			:premium => false,
+	  			:message => params[:message],
+	  			:name => params[:name],
+	  			:street1 => params[:street1],
+	  			:street2 => params[:street2],
+	  			:city => params[:city],
+	  			:state => params[:state],
+	  			:zip => params[:zip].to_i
+	  			)
+  		end
+
+  		if @gift == 'true'
+  			@order.gift = true
+  			@order.save
+  		end
+
+  		if @premium == 'true'
+  			@order.premium = true
+  			@order.save
   		end
 
   		UserMailer.purchase_email(@order).deliver
