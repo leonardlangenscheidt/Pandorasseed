@@ -1,0 +1,33 @@
+<div class='row'>
+	<div class='span4'>
+		<% if @order.gift == true %>
+			<p>
+				This order was a gift.
+				<% unless @order.message.length==0%>
+					Your benefactor wrote:<br>
+					<%= @order.message %>
+				<% else %>
+					Your benefactor did not enclose a message however...
+				<% end %>
+			</p>
+		<% else %>
+			<p>
+				Date: <%= @order.created_at.strftime "%B %e" %><br>
+				Status: <% if @order.shipped%>Shipped! <%else%>Not shipped yet...<%end%><br>
+				<%= link_to 'My Seeds', "/profile" %>
+			</p>
+		<% end %>
+	</div>
+	<div class='span5'>
+		<p>
+			<%= @order.seed.care %>
+		</p>
+	</div>
+	<div class="span3">
+		<p>
+			<%= link_to 'What is this?', howto_path(:id => @order.id) %><br>
+			Any question or concerns?<br>
+			<%=link_to "Let us know!", 'mailto:seedsofpandora@gmail.com?subject=Concern about your product', :target => '_blank' %>
+		</p>
+	</div>
+</div>

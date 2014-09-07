@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   get '/success' => 'pages#success'
   get '/profile' => 'pages#profile'
   get '/howto' => 'pages#howto'
+  get '/order/:id' => 'pages#order'
   get '/orders' => 'pages#orders'
+  get '/ship/:id' => 'pages#ship'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

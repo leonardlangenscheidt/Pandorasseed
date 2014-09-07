@@ -36,7 +36,7 @@ class ChargesController < ApplicationController
 		if @seeds.length>0
 	  		@order = Order.create(
 	  			:user_id => current_user.id,
-	  			:seed_id => @seeds[rand(@seeds.length)],
+	  			:seed_id => @seeds[rand(@seeds.length)+1],
 	  			:gift => false,
 	  			:shipped => false,
 	  			:premium => false,
@@ -49,9 +49,9 @@ class ChargesController < ApplicationController
 	  			:zip => params[:zip].to_i
 	  			)
 	  	else
-	  		@order = Orders.create(
+	  		@order = Order.create(
 	  			:user_id => current_user.id,
-	  			:seed_id => rand(@as.count),
+	  			:seed_id => rand(@allseeds.length)+1,
 	  			:gift => false,
 	  			:shipped => false,
 	  			:premium => false,
@@ -65,17 +65,17 @@ class ChargesController < ApplicationController
 	  			)
   		end
 
-  		if @gift == 'true'
+  		if params[:gift] == 'true'
   			@order.gift = true
   			@order.save
   		end
 
-  		if @premium == 'true'
+  		if params[:premium] == 'true'
   			@order.premium = true
   			@order.save
   		end
 
-  		UserMailer.purchase_email(@order).deliver
+  		# UserMailer.purchase_email(@order).deliver
 
 	  	redirect_to '/success'
 

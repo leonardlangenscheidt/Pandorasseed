@@ -5,12 +5,17 @@
 
 		<p>
 			<%= form_tag("/confirm", method: "get") do %>
+					<div class="hidden">
+						<%= label_tag(:gift, "Gift") %>
+						<%= text_field_tag(:gift, @gift) %>
+						<%= label_tag(:premium, "Premium") %>
+						<%= text_field_tag(:premium, @premium) %>
+					</div>
 				<table>
 					<tr>
 						<td><%= label_tag(:name, "Name of Recipient:") %></td>
 						<td><%= text_field_tag(:name, @name) %></td>
-					</tr>
-					<tr>
+					</tr><tr>
 						<td><%= label_tag(:street1, "Street Address:") %></td>
 						<td><%= text_field_tag(:street1, @street1) %></td>
 					</tr><tr>

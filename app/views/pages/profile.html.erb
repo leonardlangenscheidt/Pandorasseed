@@ -5,11 +5,11 @@
 </div>
 <div class="row">
 	<% @user.orders.each do |order| %>
-		<div class="span4">
+		<div class="span4 order">
 			<p>
 				Date: <%= order.created_at.strftime "%B %e" %><br>
-				Status: shippedornot<br>
-				<a>Resend care instructions</a>
+				Status: <% if order.shipped%>Shipped! <%else%>Not shipped yet...<%end%><br>
+				<%= link_to 'Details', "/order/#{order.id}" %>
 			</p>
 		</div>
 	<%end%>

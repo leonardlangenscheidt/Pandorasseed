@@ -6,10 +6,17 @@
 		</p>
 	</div>
 	<div class="span4" style="text-align:center;">
-		<p>
-			Get started<br>
-			<%=link_to 'now', buy_path %>
-		</p>
+		<% if @id == nil %>
+			<p>
+				Get started<br>
+				<%=link_to 'now', buy_path %>
+			</p>
+		<% else %>
+			<p>
+				Back to<br>
+				<%= link_to 'my order', "/order/#{@id}" %>
+			</p>
+		<% end %>
 	</div>
 </div>
 

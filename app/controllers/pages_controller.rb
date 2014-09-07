@@ -36,14 +36,27 @@ class PagesController < ApplicationController
 		end
 	end
 
+	def order
+		@order = Order.find(params[:id])
+	end
+
 	def orders
 		@orders = Order.all
+	end
+
+	def ship
+		@order = Order.find(params[:id])
+		@order.shipped = true
+		@order.save
+		#mailer
+		redirect_to orders_path
 	end
 
 	def success
 	end
 
 	def howto
+		@id = params[:id]
 	end
 
 	def profile
